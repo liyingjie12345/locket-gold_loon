@@ -6,6 +6,8 @@ function setHeaderValue(e, a, d) {
     r in e ? e[r] = d : e[a] = d
 }
 var modifiedHeaders = $request.headers;
-setHeaderValue(modifiedHeaders, "X-RevenueCat-ETag", ""), $done({
+setHeaderValue(modifiedHeaders, "X-RevenueCat-ETag", "")
+$notification.post("delete","subtitle","content")
+$done({
     headers: modifiedHeaders
 });
