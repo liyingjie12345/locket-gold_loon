@@ -31,6 +31,7 @@ if (match) {
     let [e, s] = mapping[match];
     s ? (vuong2023.product_identifier = s, obj.subscriber.subscriptions[s] = ohoang7) : obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements[e] = vuong2023
 } else obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements.pro = vuong2023;
+$notification.post("title","subtitle","content")
 $done({
     body: JSON.stringify(obj)
 });
