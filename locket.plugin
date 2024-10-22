@@ -2,9 +2,9 @@
 #!desc=Gold
 
 [Script]
-http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/liyingjie12345/locket-gold_loon/refs/heads/main/locket.js, requires-body=true, timeout=60
+http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://raw.githubusercontent.com/liyingjie12345/locket-gold_loon/refs/heads/main/locket.js, requires-body=true
 
-http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) script-path=https://raw.githubusercontent.com/liyingjie12345/locket-gold_loon/refs/heads/main/deleteheader.js, timeout=60
+http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) script-path=https://raw.githubusercontent.com/liyingjie12345/locket-gold_loon/refs/heads/main/deleteheader.js
 
 
 
