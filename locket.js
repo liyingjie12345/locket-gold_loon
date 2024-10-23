@@ -5,6 +5,7 @@ obj = {}
 if (typeof $response == "undefined") {
     delete $request.headers["x-revenuecat-etag"];
     delete $request.headers["X-RevenueCat-ETag"];
+    $notification("TEST",$request.headers)
     obj.headers = $request.headers;
 } else {
     const mapping = {
