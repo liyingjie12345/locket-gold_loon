@@ -1,11 +1,11 @@
-$notification.post("title","subtitle","content")
+
 
 obj = {}
 
 if (typeof $response == "undefined") {
     delete $request.headers["x-revenuecat-etag"];
     delete $request.headers["X-RevenueCat-ETag"];
-    $notification("TEST",$request.headers)
+    $notification.post("TEST","1",$request.headers)
     obj.headers = $request.headers;
 } else {
     const mapping = {
