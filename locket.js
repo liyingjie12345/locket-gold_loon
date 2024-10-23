@@ -3,10 +3,11 @@
 obj = {}
 
 if (typeof $response == "undefined") {
-    delete $request.headers["x-revenuecat-etag"];
-    delete $request.headers["X-RevenueCat-ETag"];
-    $notification.post("TEST","1",$request.headers)
-    obj.headers = $request.headers;
+    var headers = $request.headers
+    delete headers["x-revenuecat-etag"];
+    delete headers["X-RevenueCat-ETag"];
+    $notification.post("TEST","1",headers)
+    obj.headers = headers;
 } else {
     const mapping = {
         '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
