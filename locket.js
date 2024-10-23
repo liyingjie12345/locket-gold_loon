@@ -1,18 +1,21 @@
 
 
-obj = {}
+
 
 if (typeof $response == "undefined") {
+    var obj = {}
     var headers = $request.headers
     delete headers["x-revenuecat-etag"];
     delete headers["X-RevenueCat-ETag"];
     obj.headers = headers;
+    	
 } else {
     const mapping = {
         '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
         'Locket': ['Gold']
     };
     var ua = $request.headers["User-Agent"] || $request.headers["user-agent"]
+    var obj = {}
     obj["body"] = JSON.parse($response.body);
     var ohoang7 = {
         is_sandbox: !1,
@@ -38,8 +41,9 @@ if (typeof $response == "undefined") {
         s ? (vuong2023.product_identifier = s, obj.body.subscriber.subscriptions[s] = ohoang7) : obj.body.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.body.subscriber.entitlements[e] = vuong2023
     } else obj.body.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.body.subscriber.entitlements.pro = vuong2023;
     $notification.post("TEST","1",JSON.stringify(obj.body))
+    $done(obj);
 }
 
 
 
-$done(obj);
+
