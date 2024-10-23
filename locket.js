@@ -41,5 +41,4 @@ if (typeof $response == "undefined") {
 }
 
 
-$notification.post("TEST","1",JSON.stringify(obj))
 $done(obj);
