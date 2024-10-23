@@ -37,7 +37,7 @@ if (typeof $response == "undefined") {
         let [e, s] = mapping[match];
         s ? (vuong2023.product_identifier = s, obj.body.subscriber.subscriptions[s] = ohoang7) : obj.body.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.body.subscriber.entitlements[e] = vuong2023
     } else obj.body.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.body.subscriber.entitlements.pro = vuong2023;
-    
+    obj.body = JSON.stringify(obj.body)
 }
 
 
