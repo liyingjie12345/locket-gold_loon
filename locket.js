@@ -1,15 +1,19 @@
 $notification.post("title","subtitle","content")
-// ========= ID ========= //
-const mapping = {
-    '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
-    'Locket': ['Gold']
-};
-// =========   Phần cố định  ========= // 
-// =========  @Ohoang7 ========= // 
-var ua = $request.headers["User-Agent"] || $request.headers["user-agent"],
-    obj = JSON.parse($response.body);
-obj.Attention = "Chúc mừng bạn! Vui lòng không bán hoặc chia sẻ cho người khác!";
-var ohoang7 = {
+
+obj = {}
+
+if (typeof $response == "undefined") {
+    delete $request.headers["x-revenuecat-etag"];
+    delete $request.headers["X-RevenueCat-ETag"];
+    obj.headers = $request.headers;
+} else {
+    const mapping = {
+        '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
+        'Locket': ['Gold']
+    };
+    var ua = $request.headers["User-Agent"] || $request.headers["user-agent"],
+        obj = JSON.parse($response.body);
+    var ohoang7 = {
         is_sandbox: !1,
         ownership_type: "PURCHASED",
         billing_issues_detected_at: null,
@@ -21,17 +25,21 @@ var ohoang7 = {
         purchase_date: "2024-07-28T01:04:17Z",
         store: "app_store"
     },
-    vuong2023 = {
-        grace_period_expires_date: null,
-        purchase_date: "2024-07-28T01:04:17Z",
-        product_identifier: "com.ohoang7.premium.yearly",
-        expires_date: "2099-12-18T01:04:17Z"
-    };
-const match = Object.keys(mapping).find(e => ua.includes(e));
-if (match) {
-    let [e, s] = mapping[match];
-    s ? (vuong2023.product_identifier = s, obj.subscriber.subscriptions[s] = ohoang7) : obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements[e] = vuong2023
-} else obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements.pro = vuong2023;
+        vuong2023 = {
+            grace_period_expires_date: null,
+            purchase_date: "2024-07-28T01:04:17Z",
+            product_identifier: "com.ohoang7.premium.yearly",
+            expires_date:  "6666-06-06T06:06:06Z"
+        };
+    const match = Object.keys(mapping).find(e => ua.includes(e));
+    if (match) {
+        let [e, s] = mapping[match];
+        s ? (vuong2023.product_identifier = s, obj.subscriber.subscriptions[s] = ohoang7) : obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements[e] = vuong2023
+    } else obj.subscriber.subscriptions["com.ohoang7.premium.yearly"] = ohoang7, obj.subscriber.entitlements.pro = vuong2023;
+
+}
+
+
 
 $done({
     body: JSON.stringify(obj)
