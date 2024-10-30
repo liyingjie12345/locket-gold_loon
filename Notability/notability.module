@@ -5,4 +5,4 @@
 hostname=notability.com
 
 [Script]
-http-response ^https://notability.com/global requires-body=1,script-path=notability.js
+http-response ^https://notability.com/global requires-body=1,script-path=https://raw.githubusercontent.com/liyingjie12345/locket-gold_loon/refs/heads/main/Notability/notability.js
