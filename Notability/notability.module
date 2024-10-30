@@ -1,8 +1,5 @@
-#!name=Notability Plus
-#!desc=Notability解锁
-#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/notability.png
-#!homepage=https://yfamily.ml
-#!author=litieyin
+#!name=Notability
+#!desc=Plus
 
 [MITM]
 hostname=notability.com
